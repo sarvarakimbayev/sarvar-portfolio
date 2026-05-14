@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sarvar Portfolio</title>
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth; 
+        }
+        
+        ul, li{
+            list-style: none;
+        }
+        
+        a{
+            text-decoration: none;
+            color: #cfcfcf;
+        }
+        
+        body{
+            background:#050816;
+            color:white;
+            overflow-x:hidden;
+        }
+        
+        header{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            background:rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        
+        .nav__list {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .logo{
+            font-size:28px;
+            font-weight:bold;
+            color:#00ffe5;
+            text-shadow:0 0 20px #00ffe5;
+        }
+        
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:25px;
+            transition:0.3s;
+            font-weight:bold;
+        }
+        
+        nav a:hover{
+            color:#00ffe5;
+            text-shadow:0 0 10px #00ffe5;
+        }
+        
+        section{
+            min-height:100vh;
+            padding:120px 10%;
+            display:flex;
+            justify-content:center;
+            flex-direction:column;
+        }
+        
+        .hero{
+            position: relative;
+            display: flex;
+            align-items: center;    
+            justify-content: space-between;
+            gap: 50px;
+        }
+        
+        .hero img{
+            width: 300px;
+            border-radius: 50px;
+        }
+        
+        .hero h1{
+            font-size:70px;
+            line-height:1.1;
+        }
+        
+        .hero h1 span{
+            color:#00ffe5;
+            text-shadow:0 0 20px #00ffe5;
+        }
+        
+        .hero p{
+            margin-top:20px;
+            max-width:600px;
+            color:#cfcfcf;
+            line-height:1.7;
+            font-size:18px;
+        }
+        
+        .btn{
+            margin-top:35px;
+            width:200px;
+            padding:15px;
+            border:none;
+            border-radius:50px;
+            background:#00ffe5;
+            color:black;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.4s;
+            box-shadow:0 0 20px #00ffe5;
+        }
+        
+        .btn:hover{
+            transform:scale(1.08);
+            box-shadow:0 0 40px #00ffe5;
+        }
+        
+        .title{
+            font-size:45px;
+            margin-bottom:50px;
+            color:#00ffe5;
+            text-shadow:0 0 15px #00ffe5;
+        }
+        
+        .about-box{
+            background:rgba(255,255,255,0.05);
+            padding:35px;
+            border-radius:25px;
+            backdrop-filter:blur(10px);
+            line-height:1.8;
+            border:1px solid rgba(255,255,255,0.1);
+            box-shadow:0 0 30px rgba(0,255,229,0.1);
+        }
+        
+        .projects{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+        }
+        
+        .card{
+            background:rgba(255,255,255,0.05);
+            padding:30px;
+            border-radius:25px;
+            transition:0.4s;
+            border:1px solid rgba(255,255,255,0.08);
+            backdrop-filter:blur(10px);
+            position:relative;
+            overflow:hidden;
+        }
+        
+        .card::before{
+            content:'';
+            position:absolute;
+            width:150px;
+            height:150px;
+            background:#00ffe5;
+            filter:blur(80px);
+            top:-40px;
+            right:-40px;
+            opacity:0.3;
+        }
+        
+        .card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 0 35px rgba(0,255,229,0.3);
+        }
+        
+        .card h3{
+            margin-bottom:15px;
+            color:#00ffe5;
+        }
+        
+        .interests{
+            display:flex;
+            flex-wrap:wrap;
+            gap:20px;
+        }
+        
+        .interest{
+            padding:20px 30px;
+            background:rgba(255,255,255,0.05);
+            border-radius:20px;
+            transition:0.4s;
+            border:1px solid rgba(255,255,255,0.08);
+        }
+        
+        .interest:hover{
+            background:#00ffe5;
+            color:black;
+            transform:scale(1.08);
+            box-shadow:0 0 20px #00ffe5;
+        }
+        
+        footer{
+            text-align:center;
+            padding:30px;
+            color:#888;
+            border-top:1px solid rgba(255,255,255,0.1);
+        }
+        
+        .hero h1{
+            font-size: 45px;
+        }
+        
+        .project__img{
+            width: 350px;
+        }
+        
+        .friend-img{
+            border-radius: 30px;
+            width: 250px;
+        }
+        
+        .friends .card{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center ;
+        }
+        
+        .teacher-img{
+            border-radius: 30px;
+            width: 250px;
+        }
+        
+        .Teacher .card{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center ;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <header>
+        <div class="logo">SARVAR</div>
+        
+        <ul class="nav__list">
+            <a href="#1" class="nav__item">Bosh Sahifa</a>
+            <a href="#2" class="nav__item">Men haqimda</a>
+            <a href="#5" class="nav__item">Do'stlarim</a>
+            <a href="#3" class="nav__item">Loyihalarim</a>
+            <a href="#4" class="nav__item">Qiziqishim</a>
+        </ul>
+    </header>
+    
+    <section class="hero" id="1">
+        <img src="./logo.png" alt="">
+        <h1>
+            Salom, Men <span>Sarvar</span><br>
+            PDP school  o'quvchisi
+        </h1>
+        
+        <p>
+            Men zamonaviy web saytlar, kreativ dizaynlar va kuchli loyihalar yaratishni yaxshi ko‘raman.
+            Minimal va neon style dizaynlar mening uslubim.
+        </p>
+        
+        <button class="btn">Bog‘lanish</button>
+    </section>
+    
+    <section id="2">
+        
+        <h2 class="title">Men haqimda</h2>
+        
+        <div class="about-box">
+            Men PDP schoolda 2 yildan beri tahsil olaman. Men bu maktabga kelganimdan keyin menda ancha o'zgrish sezildi. Men hozirda frontendni o'rganyapman.
+        </div>
+        
+    </section>
+    
+    <section class="friends" id="5">
+        
+        <h2 class="title">Do‘stlarim</h2>
+        
+        <div class="projects">
+            
+            <div class="card">
+                <img src="./friend-1.png" class="friend-img">
+                
+                <h3>Habibulloh</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-2.png" class="friend-img">
+                
+                <h3>Alisher</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-3.png" class="friend-img">
+                
+                <h3>Hojiakbar</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-4.png" class="friend-img">
+                
+                <h3>Odil</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-5.png" class="friend-img">
+                
+                <h3>MuhammadAli</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-6.png" class="friend-img">
+                
+                <h3>Abdulaziz</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-7.png" class="friend-img">
+                
+                <h3>Samandar</h3>
+            </div>      
+            
+            <div class="card">
+                <img src="./friend-8.png" class="friend-img">
+                
+                <h3>Bilol</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-9.png" class="friend-img">
+                
+                <h3>MuhammmadYusuf</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-10.png" class="friend-img">
+                
+                <h3>Abdulaziz</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-11.png" class="friend-img">
+                
+                <h3>Abdulaziz</h3>
+            </div>
+            
+            <div class="card">
+                <img src="./friend-12.png" class="friend-img">
+                
+                <h3>Abdumalik</h3>
+            </div>
+        </div>
+    </section>
+    
+    <section id="3">
+        
+        <h2 class="title">Loyihalarim</h2>
+        
+        <div class="projects">
+            <div class="card">
+                <li class="project__item">
+                    <a href="https://mathcore-academy.vercel.app/" class="project__link">
+                        <img src="./loyiha-1.png" alt="" class="project__img">
+                        <h3 class="project_subtitle">MathCore</h3>
+                        <p class="project_subdesc">Matematika bo'yicha platforma</p>
+                    </a>
+                </li>
+            </div>
+            
+            <div class="card">
+                <li class="project__item">
+                    <a href="https://www.englishscore.com/" class="project__link">
+                        <img src="./loyiha-2.png" alt="" class="project__img">
+                        <h3 class="project_subtitle">EnglishScore</h3>
+                        <p class="project_subdesc">ingiliz tili bo'yicha platforma</p>
+                    </a>
+                </li>
+            </div>
+            
+            <div class="card">
+                <li class="project__item">
+                    <a href="https://www.it-park.uz/uz/itpark" class="project__link">
+                        <img src="./loyiha-3.png" alt="" class="project__img">
+                        <h3 class="project_subtitle">ITPark</h3>
+                        <p class="project_subdesc">IT ni o'rganish bo'yicha platforma</p>
+                    </a>
+                </li>
+            </div>
+            
+        </div>
+        
+    </section>
+    
+    <section id="4">
+        
+        <h2 class="title">Qiziqishim</h2>
+        
+        <div class="interests">
+            <div class="interest">Web Design</div>
+            <div class="interest">Frontend</div>
+            <div class="interest">Gaming</div>
+            <div class="interest">Football</div>            
+        </div>
+        
+    </section>
+    
+    <footer>
+        © 2026 Sarvar Portfolio | All Rights Reserved
+    </footer>
+    
+</body>
+</html>
